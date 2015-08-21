@@ -5,7 +5,7 @@ var redis = require('redis');
 
 nconf.argv();
 nconf.defaults({
-  "host": "127.0.0.1"
+  "host": "127.0.0.1",
   "port": "8000", 
   "redis-host": "127.0.0.1",
   "redis-port": "6379",

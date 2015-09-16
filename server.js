@@ -2,8 +2,10 @@ var nconf = require('nconf');
 var express = require('express');
 var bodyParser = require('body-parser');
 var redis = require('redis');
+var util = require('util');
 
 nconf.argv();
+nconf.file('config.js');
 nconf.defaults({
   "host": "127.0.0.1",
   "port": "8000", 
@@ -30,3 +32,4 @@ app.on('close', function() {
 });
 
 app.listen(nconf.get("port"), nconf.get("host"));
+console.log(util.format("Listening on %s:%s. Forwarding to %s:%s.", nconf.get("host"), nconf.get("port"), nconf.get("redis-host"), nconf.get("redis-port")));
